@@ -1,9 +1,11 @@
 import config from '../config'
+import TokenService from '../services/token-service'
 
 const ThingApiService = {
   getThings() {
     return fetch(`${config.API_ENDPOINT}/things`, {
-      headers: {
+      headers: { 
+        'authorization' : `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -14,7 +16,8 @@ const ThingApiService = {
   },
   getThing(thingId) {
     return fetch(`${config.API_ENDPOINT}/things/${thingId}`, {
-      headers: {
+      headers: { 
+        'authorization' : `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -25,7 +28,8 @@ const ThingApiService = {
   },
   getThingReviews(thingId) {
     return fetch(`${config.API_ENDPOINT}/things/${thingId}/reviews`, {
-      headers: {
+      headers: { 
+        'authorization' : `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -37,7 +41,8 @@ const ThingApiService = {
   postReview(thingId, text, rating) {
     return fetch(`${config.API_ENDPOINT}/reviews`, {
       method: 'POST',
-      headers: {
+      headers: { 
+        'authorization' : `bearer ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify({
