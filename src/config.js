@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: 'http://localhost:8000/api',
-  TOKEN_KEY: 'thingful-client-auth-token',
+  API_ENDPOINT: 'https://protected-ridge-99126.herokuapp.com/api',
+  TOKEN_KEY: process.env.TOKEN_KEY,
 }
